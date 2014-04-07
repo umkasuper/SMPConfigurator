@@ -4,12 +4,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="800.0" maxWidth="1280.0" minHeight="800.0" minWidth="1280.0" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="800.0" minWidth="1280.0" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SMPConfigurator.SMPConfigurator">
     <children><MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
             <Menu mnemonicParsing="false" text="File">
                 <items>
-                    <MenuItem mnemonicParsing="false" text="Close" />
+                    <MenuItem id="close" fx:id="close" mnemonicParsing="false" onAction="#OnClose" text="Close" />
                 </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Edit">
@@ -23,10 +23,10 @@
                 </items>
             </Menu>
         </menus>
-    </MenuBar><SplitPane dividerPositions="0.29797979797979796" focusTraversable="true" layoutX="8.0" layoutY="59.0" prefHeight="451.0" prefWidth="640.0" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="27.0">
+    </MenuBar><SplitPane fx:id="mainWindow" dividerPositions="0.11580594679186229" focusTraversable="true" layoutX="8.0" layoutY="59.0" prefHeight="451.0" prefWidth="640.0" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="27.0">
         <items>
-            <AnchorPane prefHeight="434.0" prefWidth="187.0">
-                <children><TreeView layoutX="-28.0" layoutY="14.0" prefHeight="451.0" prefWidth="186.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <AnchorPane maxWidth="187.0" prefHeight="434.0" prefWidth="187.0">
+                <children><TreeView layoutX="-28.0" layoutY="14.0" prefHeight="744.0" prefWidth="144.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                 </children></AnchorPane>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                 <children><SplitPane dividerPositions="0.5316742081447964" focusTraversable="true" layoutX="14.0" layoutY="65.5" prefHeight="451.0" prefWidth="444.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
