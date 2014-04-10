@@ -6,13 +6,18 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("SMPConfigurator.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        ResourceBundle SMPConfiguratorBundle = ResourceBundle.getBundle("SMPConfigurator.Bundle", new Locale("en", "US"));
+
+        Parent root = FXMLLoader.load(getClass().getResource("SMPConfigurator.fxml"), SMPConfiguratorBundle);
+        primaryStage.setTitle(SMPConfiguratorBundle.getString("SMPConfigurator.title"));
+        primaryStage.setScene(new Scene(root, 1080, 800));
         primaryStage.show();
     }
 

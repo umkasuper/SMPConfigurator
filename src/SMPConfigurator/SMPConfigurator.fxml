@@ -9,7 +9,7 @@
         <menus>
             <Menu mnemonicParsing="false" text="File">
                 <items>
-                    <MenuItem id="close" fx:id="close" mnemonicParsing="false" onAction="#OnClose" text="Close" />
+                    <MenuItem id="close" fx:id="close" mnemonicParsing="false" onAction="#OnClose" text="%menu.close.text" />
                 </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Edit">
@@ -26,7 +26,9 @@
     </MenuBar><SplitPane fx:id="mainWindow" dividerPositions="0.11580594679186229" focusTraversable="true" layoutX="8.0" layoutY="59.0" prefHeight="451.0" prefWidth="640.0" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="27.0">
         <items>
             <AnchorPane maxWidth="187.0" prefHeight="434.0" prefWidth="187.0">
-                <children><TreeView layoutX="-28.0" layoutY="14.0" prefHeight="744.0" prefWidth="144.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                <children>
+                    <TreeView id="ats" fx:id="ats" editable="true" layoutX="-28.0" layoutY="14.0" onContextMenuRequested="#OnTreeViewContextMenuRequested" prefHeight="744.0" prefWidth="144.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+<!--                    <TreeView id="ats" fx:id="ats" editable="true" layoutX="-28.0" layoutY="14.0" onContextMenuRequested="#OnTreeViewContextMenuRequested" onMouseClicked="#OnTreeViewClick" prefHeight="744.0" prefWidth="144.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" /> -->
                 </children></AnchorPane>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                 <children><SplitPane dividerPositions="0.5316742081447964" focusTraversable="true" layoutX="14.0" layoutY="65.5" prefHeight="451.0" prefWidth="444.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
