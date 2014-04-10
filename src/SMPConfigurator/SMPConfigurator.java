@@ -110,8 +110,9 @@ public class SMPConfigurator {
             contextMenuItemChangeName.setOnAction(new EventHandler<ActionEvent>() {
                 public void handle(ActionEvent e) {
                     out.println("selected change module name");
-
-                    ats.edit(ats.getRoot());
+                    MultipleSelectionModel<TreeItem <String> > selection = ats.getSelectionModel();
+                    TreeItem<String> item = selection.getSelectedItem();
+                    ats.edit(item);
 
                 }
             });
