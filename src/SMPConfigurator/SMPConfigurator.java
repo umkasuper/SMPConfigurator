@@ -146,7 +146,7 @@ public class SMPConfigurator {
 
                     Scene myDialogScene = null;
                     try {
-                        Parent root = FXMLLoader.load(getClass().getResource("../view/SMPConfiguratorCreateModule.fxml"), resources);
+                        Parent root = FXMLLoader.load(getClass().getResource("view/SMPConfiguratorCreateModule.fxml"), resources);
                         myDialogScene = new Scene(root, 100, 100);
                         myDialog.setScene(myDialogScene);
 //                        myDialog.show();
