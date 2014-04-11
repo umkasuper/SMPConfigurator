@@ -15,7 +15,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         ResourceBundle SMPConfiguratorBundle = ResourceBundle.getBundle("SMPConfigurator.Bundle", new Locale("en", "US"));
 
-        Parent root = FXMLLoader.load(getClass().getResource("SMPConfigurator.fxml"), SMPConfiguratorBundle);
+        Parent root = FXMLLoader.load(getClass().getResource("../view/SMPConfigurator.fxml"), SMPConfiguratorBundle);
         primaryStage.setTitle(SMPConfiguratorBundle.getString("SMPConfigurator.title"));
         primaryStage.setScene(new Scene(root, 1080, 800));
         primaryStage.show();

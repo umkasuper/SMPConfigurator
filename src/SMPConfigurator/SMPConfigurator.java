@@ -1,19 +1,20 @@
 package SMPConfigurator;
 
-import com.sun.javafx.scene.control.skin.LabeledText;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Side;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 
 import javafx.fxml.FXML;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
-import javafx.stage.WindowEvent;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -31,9 +32,6 @@ public class SMPConfigurator {
 
     @FXML
     private URL location;
-    private ActionEvent actionEvent;
-
-
 
     @FXML
     void initialize() {
@@ -57,6 +55,7 @@ public class SMPConfigurator {
     @FXML
     public void OnClose(ActionEvent actionEvent) {
         out.print("On close");
+
     }
 
 
@@ -138,12 +137,29 @@ public class SMPConfigurator {
             MenuItem contextMenuItemAddModule = new MenuItem(resources.getString("context.menu.tree.add.module"));
             contextMenuItemAddModule.setOnAction(new EventHandler<ActionEvent>() {
                 public void handle(ActionEvent e) {
-                    out.println("selected add module");
+                    out.println("selected add module " + e.getSource().toString());
+
+                    Stage myDialog = new Stage();
+                    myDialog.initModality(Modality.WINDOW_MODAL);
+                    //Window node = ((Node)e.getSource()).getScene().getWindow();
+                    //myDialog.initOwner(((Node)e.getSource()).getScene().getWindow());
+
+                    Scene myDialogScene = null;
+                    try {
+                        Parent root = FXMLLoader.load(getClass().getResource("../view/SMPConfiguratorCreateModule.fxml"), resources);
+                        myDialogScene = new Scene(root, 100, 100);
+                        myDialog.setScene(myDialogScene);
+//                        myDialog.show();
+                        myDialog.showAndWait();
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
                 }
             });
 
             rootMenu.getItems().addAll(contextMenuItemChangeName, contextMenuItemAddModule);
         }
+
 
         public TextFieldTreeCellImpl() {
             CreateModuleMenu();
@@ -160,6 +176,7 @@ public class SMPConfigurator {
             setText(null);
             setGraphic(textField);
             textField.selectAll();
+
         }
 
         @Override
