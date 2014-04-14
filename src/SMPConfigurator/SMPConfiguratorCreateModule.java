@@ -3,6 +3,7 @@ package SMPConfigurator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -19,8 +20,17 @@ public class SMPConfiguratorCreateModule {
     @FXML
     public Button cancel;
 
+    /**
+     * кнопка добавить
+     */
     @FXML
     public Button add;
+
+    /**
+     * поле для ввода имени модуля
+     */
+    @FXML
+    public TextField modulename;
 
     /**
      * языковые ресурсы
