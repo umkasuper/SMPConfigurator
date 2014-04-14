@@ -1,7 +1,6 @@
 package SMPConfigurator;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import javafx.event.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -10,6 +9,8 @@ import javafx.scene.control.*;
 import javafx.fxml.FXML;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -101,6 +102,34 @@ public class SMPConfigurator {
     }
 */
 
+
+    class TreeMouseEventDispatcher implements EventDispatcher {
+        private final EventDispatcher originalDispatcher;
+
+        public TreeMouseEventDispatcher(EventDispatcher originalDispatcher) {
+            this.originalDispatcher = originalDispatcher;
+        }
+
+        @Override
+        public Event dispatchEvent(Event event, EventDispatchChain tail) {
+            if (event instanceof MouseEvent) {
+                if (((MouseEvent) event).getButton() == MouseButton.PRIMARY
+                        && ((MouseEvent) event).getClickCount() >= 1) {
+
+                    if (!event.isConsumed()) {
+                        out.println("dispatchEvent");
+                        out.println(event.toString());
+                        // Implement your double-click behavior here, even your
+                        // MouseEvent handlers will be ignored, i.e., the event consumed!
+                        return null;
+                    }
+
+                    event.consume();
+                }
+            }
+            return originalDispatcher.dispatchEvent(event, tail);
+        }
+    }
 
     private final class TextFieldTreeCellImpl extends TreeCell<String> {
 
@@ -213,6 +242,11 @@ public class SMPConfigurator {
         @Override
         public void updateItem(String item, boolean empty) {
             super.updateItem(item, empty);
+
+            if (item != null && !empty) {
+                EventDispatcher originalDispatcher = getEventDispatcher();
+                setEventDispatcher(new TreeMouseEventDispatcher(originalDispatcher));
+            }
 
             if (empty) {
                 setText(null);
