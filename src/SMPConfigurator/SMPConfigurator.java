@@ -10,12 +10,14 @@ import javafx.scene.control.*;
 import javafx.fxml.FXML;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import static java.lang.System.*;
@@ -32,6 +34,8 @@ public class SMPConfigurator {
 
     @FXML
     private URL location;
+
+    private Stage dialogStage;
 
     @FXML
     void initialize() {
@@ -58,6 +62,14 @@ public class SMPConfigurator {
 
     }
 
+
+    /**
+     * Устанавливает stage для этого диалога.
+     * @param dialogStage
+     */
+    public void setDialogStage(Stage dialogStage) {
+        this.dialogStage = dialogStage;
+    }
 
     @FXML
     void OnTreeViewContextMenuRequested()
@@ -138,19 +150,29 @@ public class SMPConfigurator {
             contextMenuItemAddModule.setOnAction(new EventHandler<ActionEvent>() {
                 public void handle(ActionEvent e) {
                     out.println("selected add module " + e.getSource().toString());
-
-                    Stage myDialog = new Stage();
-                    myDialog.initModality(Modality.WINDOW_MODAL);
-                    //Window node = ((Node)e.getSource()).getScene().getWindow();
-                    //myDialog.initOwner(((Node)e.getSource()).getScene().getWindow());
-
-                    Scene myDialogScene = null;
+                    rootMenu.hide();
                     try {
-                        Parent root = FXMLLoader.load(getClass().getResource("view/SMPConfiguratorCreateModule.fxml"), resources);
-                        myDialogScene = new Scene(root, 100, 100);
-                        myDialog.setScene(myDialogScene);
-//                        myDialog.show();
-                        myDialog.showAndWait();
+                        ResourceBundle SMPConfiguratorBundle = ResourceBundle.getBundle("SMPConfigurator.languages.CreateModule", new Locale("en", "US"));
+
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/SMPConfiguratorCreateModule.fxml"), SMPConfiguratorBundle);
+                        AnchorPane page = (AnchorPane) loader.load();
+                        Stage dialog = new Stage();
+                        dialog.setTitle(resources.getString("context.menu.tree.add.module"));
+                        dialog.initModality(Modality.WINDOW_MODAL);
+                        dialog.initOwner(dialogStage);
+                        Scene scene = new Scene(page);
+                        dialog.setScene(scene);
+
+                        SMPConfiguratorCreateModule configuratorCreateModule = loader.getController();
+                        configuratorCreateModule.setDialogStage(dialog);
+
+                        dialog.showAndWait();
+
+                        if (configuratorCreateModule.isOk())
+                        {
+                            // добавляем в конфигурацию новый модуль
+                        }
+
                     } catch (IOException e1) {
                         e1.printStackTrace();
                     }
