@@ -13,21 +13,37 @@ import java.util.ResourceBundle;
  */
 public class SMPConfiguratorCreateModule {
 
+    /**
+     * кнопка отмена
+     */
     @FXML
     public Button cancel;
+
     @FXML
     public Button add;
 
+    /**
+     * языковые ресурсы
+     */
     @FXML
     private ResourceBundle resources;
 
     @FXML
     private URL location;
 
+    /**
+     * возвращаемый параметр успешности закрытия окна
+     */
     boolean isOk = false;
 
+    /**
+     * само окно
+     */
     private Stage dialogStage;
 
+    /**
+     * Метод вызывается после загрузки fxml  с описанием
+     */
     @FXML
     void initialize() {
 
@@ -35,7 +51,7 @@ public class SMPConfiguratorCreateModule {
 
     /**
      * Устанавливает stage для этого диалога.
-     * @param dialogStage
+     * @param dialogStage связаное окно
      */
     public void setDialogStage(Stage dialogStage) {
         this.dialogStage = dialogStage;
@@ -48,13 +64,17 @@ public class SMPConfiguratorCreateModule {
 
     /**
      * Возвращает состояние диалогового кона
-     * @return
+     * @return true если нажаты add и false если нажата cancel
      */
     public boolean isOk()
     {
         return isOk;
     }
 
+    /**
+     * обработчик сообщений от кнопок add и cancel
+     * @param actionEvent сообщение
+     */
     public void action(ActionEvent actionEvent) {
         dialogStage.close();
         isOk = (actionEvent.getSource() == add);
