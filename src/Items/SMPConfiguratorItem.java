@@ -13,10 +13,13 @@ import java.io.IOException;
  */
 public class SMPConfiguratorItem extends AnchorPane {
 
+    @FXML
     public Rectangle rectangle;
+
+    @FXML
     public AnchorPane panel;
 
-    public SMPConfiguratorItem() {
+    public SMPConfiguratorItem(double x, double y) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("view/SMPConfiguratorItem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -25,12 +28,14 @@ public class SMPConfiguratorItem extends AnchorPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+        panel.setLayoutX(x);
+        panel.setLayoutY(y);
     }
 
     @FXML
     void initialize() {
-        Rectangle r = new Rectangle(0, 0, 250, 250);
-        r.setFill(Color.BLUE);
-        panel.getChildren().add(r);
+        //Rectangle r = new Rectangle(0, 0, 250, 250);
+        //r.setFill(Color.BLUE);
+        //panel.getChildren().add(r);
     }
 }

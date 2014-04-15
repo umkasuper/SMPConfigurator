@@ -4,7 +4,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Items.Item">
-<children><Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="421.0" stroke="BLACK" strokeType="INSIDE" width="37.0" />
-</children>
-</AnchorPane>
+<fx:root type="javafx.scene.layout.AnchorPane" xmlns:fx="http://javafx.com/fxml">
+    <children>
+    <AnchorPane fx:id="panel" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+        <children><Rectangle fx:id="rectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="421.0" stroke="BLACK" strokeType="INSIDE" width="37.0" />
+        </children>
+        </AnchorPane>
+    </children>
+</fx:root>

@@ -1,5 +1,7 @@
 package SMPConfigurator;
 
+import Items.SMPConfiguratorItem;
+import javafx.collections.ObservableList;
 import javafx.event.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,6 +14,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -29,6 +32,9 @@ public class SMPConfigurator {
 
     @FXML
     public TreeView ats;
+
+    @FXML
+    public AnchorPane confururationPanel;
 
     @FXML
     private ResourceBundle resources;
@@ -55,6 +61,13 @@ public class SMPConfigurator {
                 return new TextFieldTreeCellImpl();
             }
         });
+
+
+        for (int i = 0; i < 10; i++) {
+
+            SMPConfiguratorItem slot = new SMPConfiguratorItem(i*40, 30);
+            confururationPanel.getChildren().add(slot);
+        }
     }
 
     @FXML
@@ -112,19 +125,23 @@ public class SMPConfigurator {
 
         @Override
         public Event dispatchEvent(Event event, EventDispatchChain tail) {
+            out.println(event.toString());
             if (event instanceof MouseEvent) {
                 if (((MouseEvent) event).getButton() == MouseButton.PRIMARY
                         && ((MouseEvent) event).getClickCount() >= 1) {
 
                     if (!event.isConsumed()) {
                         out.println("dispatchEvent");
-                        out.println(event.toString());
-                        // Implement your double-click behavior here, even your
-                        // MouseEvent handlers will be ignored, i.e., the event consumed!
-                        return null;
+                        if (event.getTarget() instanceof StackPane) {
+                            ObservableList<String> styleClassList =  ((StackPane)event.getTarget()).getStyleClass();
+                            for (String styleClass : styleClassList) {
+                                if (styleClass == "arrow" || styleClass == "tree-disclosure-node")
+                                    event.consume();
+                            }
+                        }
                     }
 
-                    event.consume();
+
                 }
             }
             return originalDispatcher.dispatchEvent(event, tail);
