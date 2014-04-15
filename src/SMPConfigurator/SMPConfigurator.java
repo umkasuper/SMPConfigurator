@@ -63,8 +63,8 @@ public class SMPConfigurator {
         });
 
 
-        SMPConfiguratorItem[] slot = new SMPConfiguratorItem[1];
-        for (int i = 0; i < 1; i++) {
+        SMPConfiguratorItem[] slot = new SMPConfiguratorItem[10];
+        for (int i = 0; i < slot.length; i++) {
 
             slot[i] = new SMPConfiguratorItem(i*40, 30);
             if ((i % 5) == 0)
@@ -72,6 +72,8 @@ public class SMPConfigurator {
             //configurationPanel.getChildren().add(slot[i]);
         }
         configurationPanel.getChildren().addAll(slot);
+
+
     }
 
     @FXML

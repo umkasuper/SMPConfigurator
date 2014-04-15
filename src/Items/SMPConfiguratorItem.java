@@ -23,7 +23,11 @@ public class SMPConfiguratorItem extends AnchorPane {
     @FXML
     public Label name;
 
+    double x;
+    double y;
+
     public SMPConfiguratorItem(double x, double y) {
+        super();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("view/SMPConfiguratorItem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -32,8 +36,8 @@ public class SMPConfiguratorItem extends AnchorPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-        panel.setLayoutX(x);
-        panel.setLayoutY(y);
+        this.setLayoutX(x);
+        this.setLayoutY(y);
 
         name.setVisible(false);
     }
@@ -43,6 +47,7 @@ public class SMPConfiguratorItem extends AnchorPane {
         //Rectangle r = new Rectangle(0, 0, 250, 250);
         //r.setFill(Color.BLUE);
         //panel.getChildren().add(r);
+
     }
 
     /**
