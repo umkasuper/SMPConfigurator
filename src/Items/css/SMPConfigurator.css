@@ -1,0 +1,17 @@
+
+
+.label {
+    -fx-border-width: 2;
+    -fx-border-color: white;
+    -fx-border-style: solid;
+}
+
+
+.rectangle {
+    -fx-border-width: 2;
+    -fx-fill: #f3b96e;
+}
+
+.rectangle:hover {
+    -fx-opacity: 0.5;
+}

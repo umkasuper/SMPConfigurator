@@ -34,7 +34,7 @@ public class SMPConfigurator {
     public TreeView ats;
 
     @FXML
-    public AnchorPane confururationPanel;
+    public AnchorPane configurationPanel;
 
     @FXML
     private ResourceBundle resources;
@@ -63,11 +63,15 @@ public class SMPConfigurator {
         });
 
 
-        for (int i = 0; i < 10; i++) {
+        SMPConfiguratorItem[] slot = new SMPConfiguratorItem[1];
+        for (int i = 0; i < 1; i++) {
 
-            SMPConfiguratorItem slot = new SMPConfiguratorItem(i*40, 30);
-            confururationPanel.getChildren().add(slot);
+            slot[i] = new SMPConfiguratorItem(i*40, 30);
+            if ((i % 5) == 0)
+                slot[i].setTitle("Hello");
+            //configurationPanel.getChildren().add(slot[i]);
         }
+        configurationPanel.getChildren().addAll(slot);
     }
 
     @FXML

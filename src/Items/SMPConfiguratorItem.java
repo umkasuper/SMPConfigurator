@@ -2,6 +2,7 @@ package Items;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -19,6 +20,9 @@ public class SMPConfiguratorItem extends AnchorPane {
     @FXML
     public AnchorPane panel;
 
+    @FXML
+    public Label name;
+
     public SMPConfiguratorItem(double x, double y) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("view/SMPConfiguratorItem.fxml"));
         fxmlLoader.setRoot(this);
@@ -30,6 +34,8 @@ public class SMPConfiguratorItem extends AnchorPane {
         }
         panel.setLayoutX(x);
         panel.setLayoutY(y);
+
+        name.setVisible(false);
     }
 
     @FXML
@@ -38,4 +44,15 @@ public class SMPConfiguratorItem extends AnchorPane {
         //r.setFill(Color.BLUE);
         //panel.getChildren().add(r);
     }
+
+    /**
+     * устанавливает заголовок компоненты
+     * @param title заголовок
+     */
+    public void setTitle(String title)
+    {
+        name.setVisible(!title.isEmpty());
+        name.setText(title);
+    }
+
 }
