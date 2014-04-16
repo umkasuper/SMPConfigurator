@@ -7,11 +7,7 @@
 
 <fx:root stylesheets="@../css/SMPConfigurator.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-    <AnchorPane fx:id="panel" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-        <children>
-            <Rectangle fx:id="rectangle" arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="421.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle" width="37.0" />
-            <Label fx:id="name" layoutX="20.0" layoutY="6.0" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-        </children>
-        </AnchorPane>
+        <Rectangle fx:id="rectangle" arcHeight="5.0" arcWidth="5.0" height="421.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle" width="37.0" />
+        <Label fx:id="name" layoutX="20.0" layoutY="6.0" mouseTransparent="true"  textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
     </children>
 </fx:root>

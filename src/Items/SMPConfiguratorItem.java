@@ -10,7 +10,7 @@ import javafx.scene.shape.Rectangle;
 import java.io.IOException;
 
 /**
- * Created by maksim on 15.04.14.
+ * Базовый класс примитивов рисования
  */
 public class SMPConfiguratorItem extends AnchorPane {
 
@@ -18,14 +18,13 @@ public class SMPConfiguratorItem extends AnchorPane {
     public Rectangle rectangle;
 
     @FXML
-    public AnchorPane panel;
-
-    @FXML
     public Label name;
 
-    double x;
-    double y;
-
+    /**
+     * конструктор базового класса примитивов рисования
+     * @param x координата x
+     * @param y координата y
+     */
     public SMPConfiguratorItem(double x, double y) {
         super();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("view/SMPConfiguratorItem.fxml"));
